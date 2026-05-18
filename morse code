@@ -1,0 +1,50 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+int main() {
+
+    // Morse code dictionary
+    map<char, string> morseCode = {
+        {'A', ".-"},   {'B', "-..."}, {'C', "-.-."},
+        {'D', "-.."},  {'E', "."},    {'F', "..-."},
+        {'G', "--."},  {'H', "...."}, {'I', ".."},
+        {'J', ".---"}, {'K', "-.-"},  {'L', ".-.."},
+        {'M', "--"},   {'N', "-."},   {'O', "---"},
+        {'P', ".--."}, {'Q', "--.-"}, {'R', ".-."},
+        {'S', "..."},  {'T', "-"},    {'U', "..-"},
+        {'V', "...-"}, {'W', ".--"},  {'X', "-..-"},
+        {'Y', "-.--"}, {'Z', "--.."}
+    };
+
+    string message;
+    string fullMorse = "";
+
+    cout << "Enter a message in English: ";
+    getline(cin, message);
+
+    cout << "\nOutput Morse code:\n";
+
+    // Process each character
+    for (char ch : message) {
+
+        // Convert lowercase to uppercase
+        ch = toupper(ch);
+
+        // Ignore numbers and special characters
+        if (isalpha(ch)) {
+
+            cout << ch << ": " << morseCode[ch] << endl;
+
+            fullMorse += morseCode[ch] + "   ";
+        }
+    }
+
+    cout << "\nFull Morse code message:\n";
+    cout << fullMorse << endl;
+
+    return 0;
+}
